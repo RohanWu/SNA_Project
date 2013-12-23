@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>iDrink</title>
+
+<script src="SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  
+  var index=document.getElementById("jumpMenu").selectedIndex;
+  var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+  if(index!=0)
+  {
+ /* document.getElementById("map").src=selObj.value;*/
+ switch(index)
+ {
+  case 1:
+  document.getElementById("ShopName").innerHTML="星巴克<iframe id'map' src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d904.0903878889228!2d121.57540616297523!3d24.98782772445701!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x33a228744cd23531!2z57Wx5LiA5pif5be05YWLIOaUv-Wkp-mWgOW4gg!5e0!3m2!1szh-TW!2stw!4v1387344935118' width='600' height='450' frameborder='0' style='border:0'></iframe>";
+ 
+  break;
+  case 2:
+  document.getElementById("ShopName").innerHTML="50嵐<iframe id'map' src='https://www.google.com.tw/maps/embed?pb=!1m18!1m12!1m3!1d3616.391122622786!2d121.57519619741352!3d24.986822427562604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe31b7404d1c2d068!2zNTDltZDmlL_lpKflupc!5e0!3m2!1szh-TW!2stw!4v1387343879258' width='600' height='450' frameborder='0' style='border:0'></iframe>";
+  
+  break;
+ }
+  }
+}
+
+function SearchShop()
+{alert("我不會做資料庫 (哭哭");}
+</script>
+
+<style type="text/css">
+#search {
+	margin-left: 600px;	
+}
+#ShopName {
+	font-size: x-large;
+	font-weight: bold;
+}
+</style>
+
+<link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="webIcon.ico" />
+</head>
+
+<body>
+<a href="http://ghost.cs.nccu.edu.tw/~s10030/FinalProject/"><img src="iDrink.gif" width="214" height="50" hspace="50"  /></a> 
+<span id="search">
+<input name="" type="text" /> 
+<input   type="button" value="搜尋" onclick="SearchShop()"/>
+</span>
+<hr />
+<form name="form" id="form"> 
+  <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)">
+    <option selected="selected">飲料店</option>
+    <option value="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d904.0903878889228!2d121.57540616297523!3d24.98782772445701!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x33a228744cd23531!2z57Wx5LiA5pif5be05YWLIOaUv-Wkp-mWgOW4gg!5e0!3m2!1szh-TW!2stw!4v1387344935118">星巴克</option>
+    <option value="https://www.google.com.tw/maps/embed?pb=!1m18!1m12!1m3!1d3616.391122622786!2d121.57519619741352!3d24.986822427562604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe31b7404d1c2d068!2zNTDltZDmlL_lpKflupc!5e0!3m2!1szh-TW!2stw!4v1387343879258">50嵐</option>
+  </select>
+</form>
+<br />
+<div align="left">
+<div id="TabbedPanels1" class="TabbedPanels">
+    <ul class="TabbedPanelsTabGroup" >
+      <li class="TabbedPanelsTab" tabindex="0" >簡介</li>
+      <li class="TabbedPanelsTab" tabindex="0">菜單</li>
+      <li class="TabbedPanelsTab" tabindex="0">評價</li>
+      <li class="TabbedPanelsTab" tabindex="0">好康優惠</li>
+</ul>
+    <div class="TabbedPanelsContentGroup">
+      <div class="TabbedPanelsContent"><span id="ShopName">請選擇飲料店</span></div>
+      <div class="TabbedPanelsContent" id="menu">尚無內容</div>
+      <div class="TabbedPanelsContent">尚無內容</div>
+      <div class="TabbedPanelsContent">尚無內容</div>
+</div>
+
+  </div>
+ 
+
+
+
+<script type="text/javascript">
+var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+</script>
+</body>
+</html>
