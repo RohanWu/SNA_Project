@@ -74,10 +74,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
   
 }
 
-function SearchShop()
+function resetMenu()
 {
-   
+	 
+  document.getElementById("jumpMenu").selectedIndex=0;
 }
+
+
 </script>
 
 <style type="text/css">
@@ -91,16 +94,16 @@ function SearchShop()
 <link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<body background="images/background.jpg" onload="resetMenu()">
 
-<div id="fb-root"></div>
+<!--<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=596650067056344";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));</script>-->
 
 <a href="http://idrink.comoj.com/"  ><img src="images/iDrink.gif" width="214" height="50" hspace="50"  /></a> 
  

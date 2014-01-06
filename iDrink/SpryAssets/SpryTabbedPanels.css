@@ -131,7 +131,8 @@
 	border-bottom: solid 1px #CCC;
 	border-top: solid 1px #999;
 	border-right: solid 1px #999;
-	background-color: #EEE;
+   /* background-color: #EEE; */
+	 
 }
 
 /* This is the selector for the Content panel. The Content panel holds the
@@ -146,6 +147,7 @@
 .TabbedPanelsContent {
 	overflow: hidden;
 	padding: 4px;
+	 
 }
 
 /* This selector is an example of how to change the appearnce of the currently
