@@ -42,8 +42,8 @@ $totalRows_rs_index = mysql_num_rows($rs_index);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<meta property="fb:admins" content="100000327213745" />
-<meta property="fb:app_id" content="596650067056344" />
+
+
 
 <title>iDrink</title>
 
@@ -53,6 +53,9 @@ $totalRows_rs_index = mysql_num_rows($rs_index);
 
 <script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 <script type="text/javascript">
+
+ 
+
 function MM_jumpMenu(targ,selObj,restore){ //v3.0
   
   var index=document.getElementById("jumpMenu").selectedIndex;
@@ -67,9 +70,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 	 }
 	else{
  
-	document.getElementById("ShopInfo").height=500;
+	document.getElementById("ShopInfo").height=2000;
 	document.getElementById("ShopInfo").src=selObj.options[selObj.selectedIndex].value;
-	
+	 
 	}
   
 }
@@ -83,7 +86,23 @@ function resetMenu()
 
 </script>
 
+
+</script>
+
+
 <style type="text/css">
+#FbApi{
+	background-color: #E0E1E6;  
+}
+#my-like-btn{
+	float: right;
+	 
+}
+#background{
+	/*ackground-image: url(images/background.jpg);*/
+
+}
+
 #search {
 	margin-left: 600px;	
 }
@@ -94,16 +113,9 @@ function resetMenu()
 <link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body background="images/background.jpg" onload="resetMenu()">
+<body onload="resetMenu()" background="images/background.jpg">
 
-<!--<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=596650067056344";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>-->
+
 
 <a href="http://idrink.comoj.com/"  ><img src="images/iDrink.gif" width="214" height="50" hspace="50"  /></a> 
  
@@ -115,6 +127,9 @@ function resetMenu()
 </form>
 
 <hr />
+
+<div id="background">
+
 <form name="form" id="form"> 
   <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)">
     <option selected="selected" value="" >飲料店</option>
@@ -132,10 +147,19 @@ do {
 ?>
   </select>
 </form>
-<br />
 
-<iframe src="detail.php" width="1333" height="40" scrolling="No" frameborder="0" id="ShopInfo" ></iframe>
+
  
+<br />
+      
+<iframe src="detail.php" width="1333" height="40" scrolling="No" frameborder="0" id="ShopInfo"  ></iframe>
+ 
+ 
+ 
+
+
+</div>
+
 
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
