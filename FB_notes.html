@@ -5,9 +5,6 @@
         <!-- 讀取"FB_id.js"檔的FB id -->
         <script src="./FB_id.js"></script>
         <script src="../FB_id.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
         <!-- ENDBLOCK: Loading libraries -->
     </head>
 
@@ -24,90 +21,23 @@
                     xfbml      : true              // Look for social plugins on the page
                     });
                         
-                    // Additional initialization code such as adding Event Listeners goes here
-                    window.fbLoaded();
+                // Additional initialization code such as adding Event Listeners goes here
             };
         
-            // Load the SDK asynchronously
+            // 連結iDrink app
             (function(d, s, id){
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) {return;}
                 js = d.createElement(s); js.id = id;
-                // js.src = "http://connect.facebook.net/en_US/all.js";
-                // Debug version of Facebook JS SDK
-                js.src = "http://connect.facebook.net/en_US/all/debug.js";
+                js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=716678975030552";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
         <!-- ENDBLOCK: FB SDK 初始化 -->
         
-        <!-- FB圖形按鈕 -->
-        <div class="row">
-            <div id="my-like-btn" class="col-md-8">
-                <!-- Comments -->
-                <div class="fb-comments" data-href="https://www.facebook.com"></div>
-            </div>
-            <div id="my-comments" class="col-md-4">
-                <!-- Like Button -->
-                <div class="fb-like" data-href="https://www.facebook.com"></div>
-            </div>
-        </div>
-        
-        <!-- BLOCK: Your script playground -->
-        <script id="my-script-playground">
-            window.fbLoaded = function(){
-                // 定義事件：FB登入時的變化
-                FB.Event.subscribe('auth.login', function(response) {
-                    // 當使用者登入, 圖示會變化
-                    var msg = "You're logged in.";
-                    $("#my-login-message").html(msg);
-                    console.log("Your login response:");
-                    console.log(response);
-                                   
-                    // fetch the profile
-                    fetch_my_profile();
-                });
-                                   
-                // 定義動作：點擊登入按鈕
-                $("#my-login-button").click(function(){
-                    FB.login();
-                });
-                                                               
-                var fetch_my_profile = function () {
-                    /*
-                    Fetching profile information.
-                    For more detail, please vist the following url:
-                 
-                    (Graph API: User documentation)
-                    https://developers.facebook.com/docs/graph-api/reference/user/
-                    */
-                    FB.api('/me', function(response) {
-                        var my_name = response.name;
-                        var my_gender = response.gender;
-                        var my_username = response.username;
-                        var my_facebook_id = response.id;
-                                                                          
-                        $("#my-profile-name").html(my_name);
-                        $("#my-profile-gender").html(my_gender);
-                        $("#my-profile-username").html(my_username);
-                        $("#my-profile-facebook-id").html(my_facebook_id);
-                    });
-                                                                          
-                    /*
-                    Fetching profile picture from Facebook.
-                    For more detail, please visit the following url:
-                                                                           
-                    (Graph API: User/Picture reference)
-                    https://developers.facebook.com/docs/graph-api/reference/user/picture/
-                    */
-                    FB.api('/me/picture?width=250', function(response) {
-                        var my_picture_url = response.data.url;
-                                                                                 
-                        $("#my-profile-picture").attr('src', my_picture_url);
-                    });
-                };
-            };
-        </script>
-        <!-- ENDBLOCK: Your script playground -->
+        <!-- BLOCK: FB功能介面 -->
+        <div class="fb-comments" data-href="http://idrink.comoj.com/" data-numposts="5" data-colorscheme="light"></div>
+        <div class="fb-like" data-href="http://idrink.comoj.com/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        <!-- ENDBLOCK: FB功能介面 -->
     </body>
 </html>
