@@ -65,12 +65,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
  /* document.getElementById("map").src=selObj.value;*/
 
 	 if(index==0) {
-		  document.getElementById("ShopInfo").height=40;
-	 document.getElementById("ShopInfo").src="detail.php";
+		 document.getElementById("ShopInfo").height=800;
+	 document.getElementById("ShopInfo").src=" promotion.html ";
 	 }
 	else{
  
-	document.getElementById("ShopInfo").height=2000;
+	document.getElementById("ShopInfo").height=1500;
 	document.getElementById("ShopInfo").src=selObj.options[selObj.selectedIndex].value;
 	 
 	}
@@ -104,7 +104,7 @@ function resetMenu()
 }
 
 #search {
-	margin-left: 600px;	
+	margin-left: 777px;	
 }
 </style>
 
@@ -152,7 +152,7 @@ do {
  
 <br />
       
-<iframe src="detail.php" width="1333" height="40" scrolling="No" frameborder="0" id="ShopInfo"  ></iframe>
+<iframe  src="promotion.html"  width="1333" height="800"   scrolling="No" frameborder="0" id="ShopInfo"  ></iframe>
  
  
  

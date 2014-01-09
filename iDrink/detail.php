@@ -55,7 +55,7 @@ $totalRows_rs_menu = mysql_num_rows($rs_menu);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>無標題文件</title>
+<title><?php echo $row_rs_detail['name']; ?></title>
 
 
 <!--Facebook API--> 
@@ -74,6 +74,9 @@ $totalRows_rs_menu = mysql_num_rows($rs_menu);
 }
 #left {
 	float: left;
+}
+#grade {
+	text-align: center;
 }
 </style>
 
@@ -137,25 +140,38 @@ $totalRows_rs_menu = mysql_num_rows($rs_menu);
  <!--End of FB Like Button-->    
       </div> 
       <div class="TabbedPanelsContent" id="menu">        
-       <table width="200" border="1">
+       <table width="414" border="1">
   <tr>
-    <th scope="col">飲料</th>
-    <th scope="col">評價</th>
-    <th scope="col">飲料</th>
-    <th scope="col">評價</th>
+    <th width="102" scope="col">飲料</th>
+    <th   scope="col">評價</th>
+    <th  scope="col">你覺得 </th>
+    
   </tr>
   <?php    do { ?>
-    <tr>
-     
-      <td><?php echo $row_rs_menu['name']; ?></td>
-      <td><?php echo $row_rs_menu['evaluation']; ?></td>
-      
-	    
-      <td> </td>
-      <td> </td>
-       
-    </tr>
-    <?php 
+      <?php if ($totalRows_rs_menu > 0) { // Show if recordset not empty ?>
+  <tr>
+    
+    <td><?php echo $row_rs_menu['name']; ?></td>
+    <td id="grade"> <?php echo $row_rs_menu['evaluation']; ?> </td>
+    
+    
+    <td> 
+    <form name="evalution" id="evalution"> 
+    <select name="select" id="select">
+    <option selected="selected"></option>
+<option>超難喝</option>
+      <option>難喝</option>
+      <option>普普</option>
+      <option>好喝</option>
+      <option>超好喝der</option>
+    </select>
+    <input name="" type="button" value="送出"/></form>
+    </td>
+    
+    
+  </tr>
+  <?php } // Show if recordset not empty ?>
+<?php 
 		    } while ($row_rs_menu = mysql_fetch_assoc($rs_menu)); ?>
       </table>
     </div>
