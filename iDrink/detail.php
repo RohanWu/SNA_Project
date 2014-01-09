@@ -67,6 +67,14 @@ $totalRows_rs_menu = mysql_num_rows($rs_menu);
 
 <script src="SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+function changeTitle()
+{
+	 
+     window.parent.document.title = "iDrink - <?php echo $row_rs_detail['name']; ?>";
+}
+</script>
+
 <style type="text/css">
 #ShopName {
 	font-size: x-large;
@@ -84,7 +92,7 @@ $totalRows_rs_menu = mysql_num_rows($rs_menu);
  
 </head>
 
-<body background="images/background.jpg">
+<body background="images/background.jpg" onload="changeTitle()">
 
 <!--Facebook API-->
 <!-- BLOCK: FB SDK 初始化 -->
@@ -126,7 +134,7 @@ $totalRows_rs_menu = mysql_num_rows($rs_menu);
         
          
          <!-- ENDBLOCK: FB功能介面 -->
-      <li class="TabbedPanelsTab" tabindex="0">好康優惠</li>
+      <li class="TabbedPanelsTab" tabindex="0">其他資訊</li>
     </ul>
     <div class="TabbedPanelsContentGroup">
       <div class="TabbedPanelsContent" ><span id="ShopName" ><?php echo $row_rs_detail['name']; ?></span><br /><div id='left'><img src='images/<?php echo $row_rs_detail['ID']; ?>.png' width='683 height='316 /></div><div><iframe id'map' src='<?php echo $row_rs_detail['Google map']; ?>' width='600' height='450' frameborder='0' style='border:0'></iframe>
