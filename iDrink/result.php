@@ -50,7 +50,7 @@ $totalRows_rs_search = mysql_num_rows($rs_search);
 
 </head>
 
-<body>
+<body background="images/background.jpg">
 <h1>搜尋結果：</h1>
 <h2><a href="detail.php?id=<?php echo $row_rs_search['ID']; ?>"><?php echo $row_rs_search['name']; ?>  <?php echo $row_rs_search['branch']; ?></a></h2>
 </body>
