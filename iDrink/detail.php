@@ -59,8 +59,12 @@ $totalRows_rs_menu = mysql_num_rows($rs_menu);
 
 
 <!--Facebook API--> 
-<script src="./FB_id.js"></script>
-        <script src="../FB_id.js"></script>
+ <meta property="og:title" content="iDrink, fantastic evaluation" />
+     <meta property="og:type" content="website" />
+      <meta property="og:image" content="http://idrink.comoj.com/images/iDrink.gif" />
+      <meta property="og:url" content="http://idrink.comoj.com/detail.php?id=<?php echo $row_rs_detail['ID']; ?>" />
+     <meta property="og:description" content="Wonder whether the drink you have is awesome or awful? Visit iDrink, and you will get the point." />
+ <meta property="fb:app_id" content="716678975030552" />
         
 <!--End of Facebook API--> 
 
@@ -77,7 +81,7 @@ function changeTitle()
 
 <style type="text/css">
 #ShopName {
-	font-size: x-large;
+	font-size: xx-large;
 	font-weight: bold;
 }
 #left {
@@ -90,6 +94,7 @@ function changeTitle()
 
 <link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
  
+
 </head>
 
 <body background="images/background.jpg" onload="changeTitle()">
@@ -101,8 +106,8 @@ function changeTitle()
             window.fbAsyncInit = function() {
                 // 宣告 FB JS SDK
                 FB.init({
-                    appId      : FacebookAppId,    // App ID from the app dashboard
-                    cookie     : true,             // Allowed server-side to fetch fb auth cookie
+                    appId      : 716678975030552,    // App ID from the app dashboard
+                     
                     status     : true,             // Check Facebook Login status
                     xfbml      : true              // Look for social plugins on the page
                     });
@@ -137,12 +142,15 @@ function changeTitle()
       <li class="TabbedPanelsTab" tabindex="0">其他資訊</li>
     </ul>
     <div class="TabbedPanelsContentGroup">
-      <div class="TabbedPanelsContent" ><span id="ShopName" ><?php echo $row_rs_detail['name']; ?></span><br /><div id='left'><img src='images/<?php echo $row_rs_detail['ID']; ?>.png' width='683 height='316 /></div><div><iframe id'map' src='<?php echo $row_rs_detail['Google map']; ?>' width='600' height='450' frameborder='0' style='border:0'></iframe>
+      <div class="TabbedPanelsContent" ><span id="ShopName" ><?php echo $row_rs_detail['name']; ?></span> <br /><div id='left'><img src='images/<?php echo $row_rs_detail['ID']; ?>.png' width='683 height='316 /></div><div><iframe id'map' src='<?php echo $row_rs_detail['Google map']; ?>' width='600' height='450' frameborder='0' style='border:0'></iframe>
+       
+       
+       
        <!--FB Like Button-->
  
-<div id="my-like-btn" class="col-md-4">
+<div id="my-like-btn" class="col-md-4"><a href="https://www.google.com.tw/#q=<?php echo $row_rs_detail['name']; ?>" target="_blank"><img src="images/google.png" width="20" height="18"   title="在Google上搜尋"  /></a>
                 <!-- Like Button -->
-               <div class="fb-like" data-href="http://idrink.comoj.com/detail.php?id=<?php echo $row_rs_detail['ID']; ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+          <div class="fb-like" data-href="http://idrink.comoj.com/detail.php?id=<?php echo $row_rs_detail['ID']; ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
             </div>
  </div>
  <!--End of FB Like Button-->    
@@ -184,7 +192,7 @@ function changeTitle()
       </table>
     </div>
       <div class="TabbedPanelsContent"> <div class="fb-comments" data-href="http://idrink.comoj.com/detail.php?id=<?php echo $row_rs_detail['ID']; ?>" data-numposts="5" data-colorscheme="light"></div></div>
-      <div class="TabbedPanelsContent">尚無內容</div>
+      <div class="TabbedPanelsContent">尚無內容 </div>
      </div>
      
      
