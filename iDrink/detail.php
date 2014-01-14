@@ -31,6 +31,21 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "evalution")) {
+  $insertSQL = sprintf("INSERT INTO evaluation (menuID, grade) VALUES (%s, %s)",
+                       GetSQLValueString($_POST['menuID'], "int"),
+                       GetSQLValueString($_POST['select'], "int"));
+
+  mysql_select_db($database_publish_conn, $publish_conn);
+  $Result1 = mysql_query($insertSQL, $publish_conn) or die(mysql_error());
+}
+
+/*rs_detail*/
 $colname_rs_detail = "-1";
 if (isset($_GET['id'])) {
   $colname_rs_detail = $_GET['id'];
@@ -40,16 +55,34 @@ $query_rs_detail = sprintf("SELECT * FROM shops WHERE ID = %s", GetSQLValueStrin
 $rs_detail = mysql_query($query_rs_detail, $publish_conn) or die(mysql_error());
 $row_rs_detail = mysql_fetch_assoc($rs_detail);
 $totalRows_rs_detail = mysql_num_rows($rs_detail);
+/*end of rs_detail*/
 
+/*re_menu*/
 $colname_rs_menu = "-1";
 if (isset($_GET['id'])) {
   $colname_rs_menu = $_GET['id'];
 }
 mysql_select_db($database_publish_conn, $publish_conn);
-$query_rs_menu = sprintf("SELECT * FROM Menu WHERE shopID = %s", GetSQLValueString($colname_rs_menu, "int"));
+$query_rs_menu = sprintf("SELECT * , AVG(evaluation.grade) AS avgGrade,   Count(*) AS size FROM Menu LEFT JOIN evaluation ON Menu.ID=evaluation.menuID GROUP BY Menu.ID HAVING shopID = %s", GetSQLValueString($colname_rs_menu, "int"));
 $rs_menu = mysql_query($query_rs_menu, $publish_conn) or die(mysql_error());
 $row_rs_menu = mysql_fetch_assoc($rs_menu);
 $totalRows_rs_menu = mysql_num_rows($rs_menu);
+/*end of rs_menu*/
+
+mysql_select_db($database_publish_conn, $publish_conn);
+$query_rs_evaluation = "SELECT * FROM evaluation INNER JOIN  Menu ON Menu.ID = evaluation.menuID";
+$rs_evaluation = mysql_query($query_rs_evaluation, $publish_conn) or die(mysql_error());
+$row_rs_evaluation = mysql_fetch_assoc($rs_evaluation);
+$totalRows_rs_evaluation = mysql_num_rows($rs_evaluation);
+
+/*rs_avgGrade*/
+mysql_select_db($database_publish_conn, $publish_conn);
+$query_rs_avgGrade = "SELECT evaluation.menuID , AVG( evaluation.grade ) AS  AVG_grade,Menu.ID FROM evaluation INNER JOIN Menu ON menuID=Menu.ID GROUP BY menuID";
+$rs_avgGrade = mysql_query($query_rs_avgGrade, $publish_conn) or die(mysql_error());
+$row_rs_avgGrade = mysql_fetch_assoc($rs_avgGrade);
+$totalRows_rs_avgGrade = mysql_num_rows($rs_avgGrade);
+/*end of rs_avgGrade*/
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -72,10 +105,11 @@ $totalRows_rs_menu = mysql_num_rows($rs_menu);
 <script src="SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-function changeTitle()
+function bodyOnLoad()
 {
 	 
      window.parent.document.title = "iDrink - <?php echo $row_rs_detail['name']; ?>";
+	 
 }
 </script>
 
@@ -97,11 +131,11 @@ function changeTitle()
 
 </head>
 
-<body background="images/background.jpg" onload="changeTitle()">
+<body background="images/background.jpg" onload="bodyOnLoad()">
 
 <!--Facebook API-->
 <!-- BLOCK: FB SDK 初始化 -->
-        <div id="fb-root"></div>
+<div id="fb-root"></div>
         <script>
             window.fbAsyncInit = function() {
                 // 宣告 FB JS SDK
@@ -156,11 +190,11 @@ function changeTitle()
  <!--End of FB Like Button-->    
       </div> 
       <div class="TabbedPanelsContent" id="menu">        
-       <table width="414" border="1">
+       <table   border="1">
   <tr>
-    <th width="102" scope="col">飲料</th>
-    <th   scope="col">評價</th>
-    <th  scope="col">你覺得 </th>
+    <th    scope="col">飲料</th>
+    <th     scope="col">評價</th>
+    <th    scope="col">你覺得 </th>
     
   </tr>
   <?php    do { ?>
@@ -168,20 +202,40 @@ function changeTitle()
   <tr>
     
     <td><?php echo $row_rs_menu['name']; ?></td>
-    <td id="grade"> <?php echo $row_rs_menu['evaluation']; ?> </td>
+     <?php 
+	 
+	if($row_rs_menu['avgGrade'] >4.5){
+		
+	   echo "<td id='grade' bgcolor='#00CCFF'>".sprintf("%.1f",$row_rs_menu['avgGrade'])."(潮好喝der)";}
+	else if($row_rs_menu['avgGrade']>3.5)
+	   echo "<td id='grade' bgcolor='#99cc00'>".sprintf("%.1f",$row_rs_menu['avgGrade'])."(好喝)";
+	else if($row_rs_menu['avgGrade']>2.5)
+	   echo "<td id='grade' bgcolor='#ffcf02'>".sprintf("%.1f",$row_rs_menu['avgGrade'])."(普普)";
+	else if($row_rs_menu['avgGrade']>1.5)
+	   echo "<td id='grade' bgcolor='#ff9f02'>".sprintf("%.1f",$row_rs_menu['avgGrade'])."(難喝)";
+	else 
+	   echo "<td id='grade' bgcolor='#ff6f31'>".sprintf("%.1f",$row_rs_menu['avgGrade'])."(超難喝)";
+	    
+	echo	"/".$row_rs_menu['size']."人評過分</td>";
+		
+	?> 
     
     
     <td> 
-    <form name="evalution" id="evalution"> 
+    <form action="<?php echo $editFormAction; ?>" method="POST" name="evalution"  > 
+    <input name="menuID" type="hidden" value="<?php echo $row_rs_menu['menuID']; ?>" />
     <select name="select" id="select">
-    <option selected="selected"></option>
-<option>超難喝</option>
-      <option>難喝</option>
-      <option>普普</option>
-      <option>好喝</option>
-      <option>超好喝der</option>
+      <option selected="selected"></option>
+       <option value="1">超難喝</option>
+      <option value="2">難喝</option>
+      <option value="3">普普</option>
+      <option value="4">好喝</option>
+      <option value="5">超好喝der</option>
     </select>
-    <input name="" type="button" value="送出"/></form>
+    <input   type="submit"  />
+    <input type="hidden" name="MM_insert" value="evalution" />
+    </form>
+   
     </td>
     
     
@@ -208,4 +262,8 @@ var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
 mysql_free_result($rs_detail);
 
 mysql_free_result($rs_menu);
+
+mysql_free_result($rs_evaluation);
+
+mysql_free_result($rs_avgGrade);
 ?>
