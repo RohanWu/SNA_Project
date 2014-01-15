@@ -38,9 +38,10 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "evalution")) {
 	
-  $insertSQL = sprintf("INSERT INTO evaluation (menuID, grade) VALUES (%s, %s)",
+  $insertSQL = sprintf("INSERT INTO evaluation (menuID, grade ) VALUES (%s, %s )",
                        GetSQLValueString($_POST['menuID'], "int"),
-                       GetSQLValueString($_POST['select'], "int"));
+                       GetSQLValueString($_POST['select'], "int")
+					   );
 
   mysql_select_db($database_publish_conn, $publish_conn);
   $Result1 = mysql_query($insertSQL, $publish_conn) or die(mysql_error());
@@ -112,6 +113,8 @@ function bodyOnLoad()
 	document.getElementById("my-login-button").style.visibility="hidden";
 	document.getElementById("my-logout-button").style.visibility="visible";
 	document.getElementById("my-profile-picture").style.visibility="visivle";
+	
+	 
   } else if (response.status === 'not_authorized') {
     // the user is logged in to Facebook, 
     // but has not authenticated your app
@@ -229,6 +232,7 @@ visibility: hidden;
             var fetch_my_profile = function () {				
 				FB.api('/me', function(response) {
                     var my_facebook_id = response.id;
+					 
 				});
 				FB.api('/me/picture', function(response) {
                  var my_picture_url = response.data.url;
@@ -294,6 +298,7 @@ visibility: hidden;
 	echo	"/".$row_rs_menu['size']."人評過分</td>";	  ?>
               <td><form action="<?php echo $editFormAction; ?>" method="post" name="evalution" id="evalution"  >
                   <input name="menuID" type="hidden" value="<?php echo $row_rs_menu['menuID']; ?>" />
+                  <input name="FBID" type="hidden" />
                   <select name="select" id="select">
                     <option selected="selected"></option>
                     <option value="1">超難喝</option>

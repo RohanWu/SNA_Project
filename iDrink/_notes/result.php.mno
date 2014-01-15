@@ -2,5 +2,5 @@
 <info>
 	<infoitem key="UD_rs_search" value="name:ID;datatype:int,name:name;datatype:string,name:branch;datatype:string,name:address;datatype:string,name:Google map;datatype:string,name:URL;datatype:string" />
 	<infoitem key="UD_rs_searchMENU" value="name:ID;datatype:int,name:shopID;datatype:int,name:name;datatype:string,name:evaluation;datatype:int" />
-	<infoitem key="UD_rs_searchMenu" value="name:ID;datatype:int,name:shopID;datatype:int,name:name;datatype:string,name:evaluation;datatype:int,name:ID;datatype:int,name:name;datatype:string,name:branch;datatype:string,name:address;datatype:string,name:Google map;datatype:string,name:URL;datatype:string" />
+	<infoitem key="UD_rs_searchMenu" value="name:ID;datatype:int,name:shopID;datatype:int,name:name;datatype:string,name:evaluation;datatype:int,name:ID;datatype:int,name:name;datatype:string,name:branch;datatype:string,name:address;datatype:string,name:Google map;datatype:string,name:URL;datatype:string,name:size;datatype:int" />
 </info>
