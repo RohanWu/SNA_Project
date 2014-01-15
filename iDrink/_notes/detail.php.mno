@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
-	<infoitem key="UD_rs_detail" value="name:ID;datatype:int,name:name;datatype:string,name:branch;datatype:string,name:address;datatype:string,name:Google map;datatype:string,name:menu;datatype:string" />
+	<infoitem key="UD_rs_detail" value="name:ID;datatype:int,name:name;datatype:string,name:branch;datatype:string,name:address;datatype:string,name:Google map;datatype:string,name:URL;datatype:string" />
 	<infoitem key="UD_rs_evaluation" value="name:ID;datatype:int,name:menuID;datatype:int,name:grade;datatype:int,name:UserAccount;datatype:string,name:ID;datatype:int,name:shopID;datatype:int,name:name;datatype:string,name:evaluation;datatype:int" />
 	<infoitem key="UD_rs_avgGrade" value="name:menuID;datatype:int,name:AVG_grade;datatype:real,name:ID;datatype:int" />
 	<infoitem key="UD_rs_menu" value="name:ID;datatype:int,name:shopID;datatype:int,name:name;datatype:string,name:evaluation;datatype:int,name:ID;datatype:int,name:menuID;datatype:int,name:grade;datatype:int,name:UserAccount;datatype:string,name:avgGrade;datatype:real,name:size;datatype:int" />

@@ -124,7 +124,7 @@ function resetMenu()
   <span id="sprytextfield1">
   <input name="target"  type="text" id="SearchTarget"/>
   <span class="textfieldRequiredMsg">請輸入店名</span></span>
-  <input   name="name"  type="submit" value="搜尋"  onclick="resetMenu()" />
+  <input   name="name"  type="submit" value="搜尋"  onclick="resetMenu()" style="width:50px; height:28px" />
 </form>
  
   <br />
