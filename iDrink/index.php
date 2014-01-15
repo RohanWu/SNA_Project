@@ -2,6 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
 <title>iDrink</title>
 <link rel="shortcut icon" href="images/webIcon.ico" />
 <!--<script src="SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
@@ -12,5 +15,6 @@
   <frame src="promotion.html" name="mainFrame" id="mainFrame" title="mainFrame" />
 </frameset>
 <noframes><body>
+請升級為可處理頁框的瀏覽器
 </body></noframes>
 </html>

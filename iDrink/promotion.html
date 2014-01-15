@@ -4,13 +4,67 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>無標題文件</title>
 <style type="text/css">
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
 .left {
 	float: left;
 }
-</style></head>
+
+#apDiv1 {
+	position:absolute;
+	left:50px;
+	top:267px;
+	width:1053px;
+	height:505px;
+	z-index:1;
+	visibility: hidden;
+}
+#apDiv2 {
+	position:absolute;
+	left:836px;
+	top:373px;
+	width:51px;
+	height:57px;
+	z-index:2;
+}
+#showStaffBtn {
+	font-size: large;
+	text-align: center;	
+}
+
+
+</style>
+<script type="text/javascript">
+function showHideVideo(ElementID) { //v9.0
+  var video=document.getElementById(ElementID);
+  var button=document.getElementById("showStaffBtn"); 
+ 
+  if(video.style.width=="0px" && video.style.height=="0px")
+  {
+	  
+	  video.style.width="1280px";
+	  video.style.height="720px";
+	  button.innerHTML="<strong>&uArr;</strong>製作群";
+   }
+   else
+  {
+      video.style.width=0;
+	  video.style.height=0;
+    
+	button.innerHTML="<strong>&dArr;</strong>製作群";
+ }
+}
+</script>
+</head>
 
 <body background="images/background.jpg">
-<h1 align="center"><img src="images/recentPromo.jpg" width="589" height="291" /></h1>
+
+
+<h1 align="center"><img src="images/recentPromo.jpg" width="1024" height="237" /></h1>
 <ul >
   <li> <h2>星巴克</h2>  </li>
   <ol class="left">
@@ -24,5 +78,13 @@
     </ol>
   </li>
 </ul>
+<hr />
+<div align="center"><button type="button" id="showStaffBtn" onclick="showHideVideo('staffVideo')"><strong>&dArr;</strong>製作群</button>
+<br />
+<!--<div id="staffVideo">-->
+<iframe  id="staffVideo"  style="width: 0px; height: 0px;" src="//www.youtube.com/embed/Wkyc-Wxb_ns?rel=0" frameborder="0" allowfullscreen></iframe>
+<!--</div>--></div>
+<div id="apDiv1"> </div>
+<div id="apDiv2"> </div>
 </body>
 </html>
