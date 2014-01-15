@@ -46,16 +46,16 @@ function showHideVideo(ElementID) { //v9.0
   if(video.style.width=="0px" && video.style.height=="0px")
   {
 	  
-	  video.style.width="1280px";
-	  video.style.height="720px";
-	  button.innerHTML="<strong>&uArr;</strong>製作群";
+	  video.style.width="853px";
+	  video.style.height="480px";
+	  button.innerHTML="<strong>&uArr;</strong>製作群<strong>&uArr;</strong>";
    }
    else
   {
       video.style.width=0;
 	  video.style.height=0;
     
-	button.innerHTML="<strong>&dArr;</strong>製作群";
+	button.innerHTML="<strong>&dArr;</strong>製作群<strong>&dArr;</strong>";
  }
 }
 </script>
@@ -79,7 +79,7 @@ function showHideVideo(ElementID) { //v9.0
   </li>
 </ul>
 <hr />
-<div align="center"><button type="button" id="showStaffBtn" onclick="showHideVideo('staffVideo')"><strong>&dArr;</strong>製作群</button>
+<div align="center"><button type="button" id="showStaffBtn" onclick="showHideVideo('staffVideo')"><strong>&dArr;</strong>製作群<strong>&dArr;</strong></button>
 <br />
 <!--<div id="staffVideo">-->
 <iframe  id="staffVideo"  style="width: 0px; height: 0px;" src="//www.youtube.com/embed/Wkyc-Wxb_ns?rel=0" frameborder="0" allowfullscreen></iframe>
